@@ -84,6 +84,10 @@ def read_grid(file_name: str, blackened: set):
         messagebox.showerror("Erreur", "La grille contient des valeurs inconnues !")
         return
 
+    if not grid:
+        messagebox.showerror("Erreur", "Le fichier est vide !")
+        return
+
     # Vérification du format rectangulaire.
     if sum(len(line) for line in grid) != len(grid) * len(grid[0]):
         messagebox.showerror("Erreur", "La grille n'est pas rectangulaire !")
@@ -511,7 +515,7 @@ class Hitori:
 class Menu:
 
     def __init__(self):
-        self.WIDTH = 6 * CELL_SIZE
+        self.WIDTH = 7 * CELL_SIZE
         self.HEIGHT = 7 * CELL_SIZE
         self.buttons = dict()
 
@@ -591,7 +595,7 @@ class GameList:
             if file.split(".")[-1] != "hti":
                 continue
             self.grid_files.append(file)
-            self.buttons[file] = Button(file, lambda gl=self, f=file: gl.load(f), width="X" * 20)
+            self.buttons[file] = Button(file, lambda gl=self, f=file: gl.load(f), width="X" * 16)
 
         self.page = 0
         self.max_page = len(self.grid_files) // PAGE_SIZE
