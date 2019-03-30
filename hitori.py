@@ -30,10 +30,10 @@ def pixel_to_cell(pixel: tuple):
     :return: Coordonées de la cellule.
 
     >>> pixel_to_cell((100, 200))
-    (4, 2)
+    (2, 4)
     """
     i, j = pixel
-    return j // CELL_SIZE, i // CELL_SIZE
+    return i // CELL_SIZE, j // CELL_SIZE
 
 
 def format_time(time: int):
@@ -406,7 +406,7 @@ class Hitori:
                     x, y = abscisse(ev), ordonnee(ev)
                     if not self.victory and not self.pause and \
                             MARGIN < x < MARGIN + self.GRID_WIDTH and MARGIN < y < MARGIN + self.GRID_HEIGHT:
-                        x, y = pixel_to_cell((x - MARGIN, y - MARGIN))
+                        y, x = pixel_to_cell((x - MARGIN, y - MARGIN))
                         self.blackened_history.append(self.blackened.copy())
                         if (x, y) in self.blackened:
                             self.blackened.discard((x, y))
