@@ -219,7 +219,7 @@ def related(grid: list, blackened: set):
     """
     # Parcours des cellules de la grille.
     for i, line in enumerate(grid):
-        for j, column in enumerate(line):
+        for j in range(len(line)):
             if (i, j) in blackened:
                 continue
 
@@ -506,7 +506,8 @@ class Hitori:
         messagebox.showinfo("Succès", "La partie a été sauvegardée dans le fichier " + file_name + ".")
         self.pause = False
 
-    def menu(self):
+    @staticmethod
+    def menu():
         """Ferme la partie et lance le menu principal."""
         ferme_fenetre()
         Menu()
@@ -565,14 +566,16 @@ class Menu:
         # Nettoyage de la fenêtre.
         efface_tout()
 
-    def load(self):
+    @staticmethod
+    def load():
         """Ferme le menu et charge une grille."""
         messagebox.showinfo("Information", "Veuillez entrer le nom du fichier dans la console.")
         file_name = input("Nom du fichier : ")
         ferme_fenetre()
         Hitori(file_name)
 
-    def grid_list(self):
+    @staticmethod
+    def grid_list():
         """Ferme le menu et ouvre le sélecteur de grilles."""
         ferme_fenetre()
         GameList()
@@ -655,7 +658,8 @@ class GameList:
             if self.page * PAGE_SIZE <= i < (self.page + 1) * PAGE_SIZE:
                 self.buttons[file].draw(self.WIDTH // 2, (i % PAGE_SIZE + 2) * CELL_SIZE, anchor='center')
 
-    def back(self):
+    @staticmethod
+    def back():
         """Ferme la liste des grilles et ouvre le menu principal."""
         ferme_fenetre()
         Menu()
@@ -670,7 +674,8 @@ class GameList:
         if self.page < self.max_page:
             self.page += 1
 
-    def load(self, file_name):
+    @staticmethod
+    def load(file_name):
         """Ferme le selecteur de grille et ouvre le niveau."""
         ferme_fenetre()
         Hitori(file_name)
