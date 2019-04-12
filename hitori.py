@@ -139,11 +139,11 @@ def write_grid(grid: list, blackened: set, file_name: str):
     file.close()
 
 
-def without_conflict(grid: list, backened: set):
+def without_conflict(grid: list, blackened: set):
     """
     Vérifie que chaque numéro n'apparaisse qu'une fois par ligne et par colonne. (Règle n°1)
     :param grid: Liste de listes décrivant la grille.
-    :param backened: Ensemble des cellules noircies.
+    :param blackened: Ensemble des cellules noircies.
     :return: Booléen déterminant s'il y a conflit.
 
     >>> without_conflict([[2, 2, 1, 5, 3], [2, 3, 1, 4, 5], [1, 1, 1, 3, 5], [1, 3, 5, 4, 2], [5, 4, 3, 2, 1]], \
@@ -154,7 +154,7 @@ def without_conflict(grid: list, backened: set):
     for i, line in enumerate(grid):
         unique = list()
         for j, column in enumerate(line):
-            if (i, j) in backened:
+            if (i, j) in blackened:
                 continue
             if column not in unique:
                 unique.append(column)
@@ -165,7 +165,7 @@ def without_conflict(grid: list, backened: set):
     for j, column in enumerate([[line[column] for line in grid] for column in range(len(grid[0]))]):
         unique = list()
         for i, line in enumerate(column):
-            if (i, j) in backened:
+            if (i, j) in blackened:
                 continue
             if line not in unique:
                 unique.append(line)
