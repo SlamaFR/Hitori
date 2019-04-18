@@ -291,12 +291,11 @@ def contains_duplicates(lst: list, element: object):
     return False
 
 
-def solve(grid: list, blackened: set, duplicates: set, i: int = 0, j: int = 0):
+def solve(grid: list, blackened: set, i: int = 0, j: int = 0):
     """
     Retourne l'ensemble des cellules noircies solution de la grille, ou None s'il n'y a aucune solution.
     :param grid: Liste de listes décrivant la grille.
     :param blackened: Ensemble des cellules noircies.
-    :param duplicates: Ensemble des cellules en conflits.
     :param i: Indice de la ligne actuelle.
     :param j: Indice de la colonne actuelle.
     :return: Ensemble des cellules à noircir ou None si aucune solution n'existe.
@@ -305,9 +304,9 @@ def solve(grid: list, blackened: set, duplicates: set, i: int = 0, j: int = 0):
     # Définition d'une fonction permettant de passer en revue la cellule suivante.
     def next_cell():
         if j < len(grid[0]) - 1:
-            return solve(grid, blackened, duplicates, i, j + 1)
+            return solve(grid, blackened, i, j + 1)
         elif i < len(grid) - 1:
-            return solve(grid, blackened, duplicates, i + 1, 0)
+            return solve(grid, blackened, i + 1, 0)
         else:
             return None
 
@@ -477,8 +476,7 @@ class Hitori:
         """Résout la grille actuelle."""
         self.blackened_history.append(self.blackened.copy())
 
-        duplicates = set()
-        solution = solve(self.grid, set(), duplicates)
+        solution = solve(self.grid, set())
 
         if solution is not None:
             self.blackened = solution
