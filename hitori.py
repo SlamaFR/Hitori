@@ -2,7 +2,6 @@ import os
 import sys
 from datetime import datetime
 from doctest import testmod
-from math import floor
 from tkinter import messagebox
 
 from upemtk import *
@@ -567,7 +566,7 @@ class GameList:
 
     def __init__(self):
         self.WIDTH = 9 * CELL_SIZE
-        self.HEIGHT = floor(7.5 * CELL_SIZE)
+        self.HEIGHT = int(7.5 * CELL_SIZE)
         self.buttons = dict()
         self.grid_files = list()
 
