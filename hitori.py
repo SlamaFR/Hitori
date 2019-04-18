@@ -36,22 +36,6 @@ def pixel_to_cell(pixel: tuple):
     return i // CELL_SIZE, j // CELL_SIZE
 
 
-def format_time(time: int):
-    """
-    Formatte le temps sous la forme 'mm:ss' avec m pour les minutes et s pour les secondes.
-    :param time: Temps à formater.
-    :return: Temps formatté.
-
-    >>> format_time(90)
-    '01:30'
-    """
-    minutes = time // 60
-    seconds = time % 60
-    minutes = str(minutes) if minutes >= 10 else "0" + str(minutes)
-    seconds = str(seconds) if seconds >= 10 else "0" + str(seconds)
-    return minutes + ":" + seconds
-
-
 def read_grid(file_name: str, blackened: set):
     """
     Décrit les valeurs de la grille contenue dans le fichier texte sous forme de liste de listes.
