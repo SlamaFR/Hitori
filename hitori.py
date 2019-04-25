@@ -207,12 +207,12 @@ def related(grid: list, blackened: set):
                 continue
 
             # Vérification de l'unicité de la zone formée en partant d'une cellule.
-            return sum([len(line) for line in grid]) == len(blackened) + len(explore(grid, i, j, blackened))
+            return sum([len(line) for line in grid]) == len(blackened) + len(explore(grid, i, j, blackened, set()))
 
     return False
 
 
-def explore(grid: list, line: int, column: int, blackened: set, vacants: set = None):
+def explore(grid: list, line: int, column: int, blackened: set, vacants: set):
     """
     Explore la grille afin de recupérer toutes les cellules libres en partant d'une cellule.
     :param grid: Liste de listes décrivant la grille.
@@ -222,14 +222,6 @@ def explore(grid: list, line: int, column: int, blackened: set, vacants: set = N
     :param vacants: Ensemble des cellules libres.
     :return: Ensemble des cellules libres.
     """
-    # Instanciation de l'ensemble des cellules libres.
-    if vacants is None:
-        vacants = set()
-
-    # Vérification de l'état de la cellule.
-    if (line, column) in blackened:
-        return
-
     # Ajout de la cellule libre à l'ensemble.
     if (line, column) not in vacants:
         vacants.add((line, column))
