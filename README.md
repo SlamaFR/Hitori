@@ -5,13 +5,13 @@ Python version of a famous Japanese game.
 ### Rules
 Every game start with a grid full of numbers. The goal is to blacken cells to pass 3 rules:
 
-- A number can appear only once on its line and its row.
-- Two blackened cells can't touch each other except in diagonal.
-- The area shaped by non-blackened cells must be unique.
+  - A number can appear only once on its line and its row.
+  - Two blackened cells can't touch each other except in diagonal.
+  - The area shaped by non-blackened cells must be unique.
 
 ### Controls
-- Click on a cell to blacken/un-blacken it.
-- In-game, presse 'Escape' to toggle on/off the menu.
+  - Click on a cell to blacken/un-blacken it.
+  - In-game, presse 'Escape' to toggle on/off the menu.
 
 ### Additional information
 You can save a game via the in-game menu and finish it later.
