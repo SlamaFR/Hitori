@@ -6,7 +6,7 @@ Python version of a famous Japanese game.
 
 ### Rules
 
-Every game start with a grid full of numbers. The goal is to blacken cells to pass 3 rules:
+Every game starts with a grid full of numbers. The goal is to blacken cells to pass 3 rules:
 
 - A number can appear only once on its line and its row.
 - Two blackened cells can't touch each other except in diagonal.
@@ -15,11 +15,12 @@ Every game start with a grid full of numbers. The goal is to blacken cells to pa
 ### Controls
 
 - Click on a cell to blacken/un-blacken it.
-- In-game, presse 'Escape' to toggle on/off the menu.
+- In-game, press 'Escape' to toggle the menu.
 
 ### Additional information
 
 You can save a game via the in-game menu and finish it later.
+The saved game will be named by the save time.
 
 The program considers levels as .hti files. You can create your levels as well by saving them as .hti files.
 
